@@ -26,7 +26,7 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 221.2 83.2% 53.3%;
-    --radius: 0.75rem;
+    --radius: 1rem;
   }
 
   .dark {
@@ -86,5 +86,17 @@ body {
 
 .text-gradient {
   @apply bg-gradient-to-br from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent;
+}
+
+.glass-card {
+  @apply bg-card/50 backdrop-blur-sm border border-border/50;
+}
+
+.input-gradient:focus {
+  @apply bg-gradient-to-br from-primary/5 via-transparent to-transparent;
+}
+
+.button-gradient {
+  @apply bg-gradient-to-r from-primary via-primary/90 to-primary/80 hover:from-primary/90 hover:to-primary/70 transition-all duration-300;
 }
 
