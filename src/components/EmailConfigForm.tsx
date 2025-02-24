@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card } from "@/components/ui/card";
+import { Mail, Lock, Server } from 'lucide-react';
 
 type EmailConfigFormProps = {
   onSubmit: (config: EmailConfig) => void;
@@ -52,7 +53,6 @@ const EmailConfigForm = ({ onSubmit }: EmailConfigFormProps) => {
     onSubmit(config);
     toast.success("Email configuration saved successfully");
     
-    // Reset form
     setConfig({
       emailAddress: '',
       connectionType: '',
@@ -95,18 +95,21 @@ const EmailConfigForm = ({ onSubmit }: EmailConfigFormProps) => {
   };
 
   return (
-    <Card className="p-6 space-y-6 animate-fade-up">
+    <Card className="p-6 space-y-6 animate-fade-up glass-card">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="emailAddress">Email Address</Label>
-          <Input
-            id="emailAddress"
-            type="email"
-            placeholder="Enter your email address"
-            value={config.emailAddress}
-            onChange={(e) => setConfig({ ...config, emailAddress: e.target.value })}
-            className="w-full"
-          />
+          <Label htmlFor="emailAddress" className="text-sm font-medium">Email Address</Label>
+          <div className="relative">
+            <Mail className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
+            <Input
+              id="emailAddress"
+              type="email"
+              placeholder="Enter your email address"
+              value={config.emailAddress}
+              onChange={(e) => setConfig({ ...config, emailAddress: e.target.value })}
+              className="pl-10 input-gradient"
+            />
+          </div>
         </div>
 
         <div className="space-y-2">
@@ -115,7 +118,7 @@ const EmailConfigForm = ({ onSubmit }: EmailConfigFormProps) => {
             value={config.connectionType}
             onValueChange={handleConnectionTypeChange}
           >
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="w-full input-gradient">
               <SelectValue placeholder="Select connection type" />
             </SelectTrigger>
             <SelectContent>
@@ -130,58 +133,70 @@ const EmailConfigForm = ({ onSubmit }: EmailConfigFormProps) => {
 
         <div className="space-y-2">
           <Label htmlFor="username">Username</Label>
-          <Input
-            id="username"
-            type="text"
-            placeholder="Enter username"
-            value={config.username}
-            onChange={(e) => setConfig({ ...config, username: e.target.value })}
-            className="w-full"
-          />
+          <div className="relative">
+            <Lock className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
+            <Input
+              id="username"
+              type="text"
+              placeholder="Enter username"
+              value={config.username}
+              onChange={(e) => setConfig({ ...config, username: e.target.value })}
+              className="pl-10 input-gradient"
+            />
+          </div>
         </div>
 
         <div className="space-y-2">
           <Label htmlFor="password">Password / App Password</Label>
-          <Input
-            id="password"
-            type="password"
-            placeholder="Enter password or app password"
-            value={config.password}
-            onChange={(e) => setConfig({ ...config, password: e.target.value })}
-            className="w-full"
-          />
+          <div className="relative">
+            <Lock className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
+            <Input
+              id="password"
+              type="password"
+              placeholder="Enter password or app password"
+              value={config.password}
+              onChange={(e) => setConfig({ ...config, password: e.target.value })}
+              className="pl-10 input-gradient"
+            />
+          </div>
         </div>
 
         {config.connectionType === 'IMAP' || config.connectionType === 'POP3' ? (
           <>
             <div className="space-y-2">
               <Label htmlFor="host">Host</Label>
-              <Input
-                id="host"
-                type="text"
-                placeholder="Enter host (e.g., imap.gmail.com)"
-                value={config.host}
-                onChange={(e) => setConfig({ ...config, host: e.target.value })}
-                className="w-full"
-              />
+              <div className="relative">
+                <Server className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
+                <Input
+                  id="host"
+                  type="text"
+                  placeholder="Enter host (e.g., imap.gmail.com)"
+                  value={config.host}
+                  onChange={(e) => setConfig({ ...config, host: e.target.value })}
+                  className="pl-10 input-gradient"
+                />
+              </div>
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="port">Port</Label>
-              <Input
-                id="port"
-                type="text"
-                placeholder="Enter port (e.g., 993)"
-                value={config.port}
-                onChange={(e) => setConfig({ ...config, port: e.target.value })}
-                className="w-full"
-              />
+              <div className="relative">
+                <Server className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
+                <Input
+                  id="port"
+                  type="text"
+                  placeholder="Enter port (e.g., 993)"
+                  value={config.port}
+                  onChange={(e) => setConfig({ ...config, port: e.target.value })}
+                  className="pl-10 input-gradient"
+                />
+              </div>
             </div>
           </>
         ) : null}
 
         <div className="pt-4">
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full button-gradient">
             Save Configuration
           </Button>
         </div>
