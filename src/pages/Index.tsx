@@ -39,10 +39,10 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background p-8 transition-colors duration-300">
-      <div className="max-w-6xl mx-auto space-y-12">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-muted/30 transition-colors duration-500">
+      <div className="max-w-6xl mx-auto p-6 md:p-8 space-y-8">
         {/* Hero Section */}
-        <div className="text-center space-y-4 py-12">
+        <div className="text-center space-y-4 py-8">
           <div className="flex items-center justify-center gap-4 animate-fade-in">
             <div className="p-3 glass-card rounded-xl">
               <Mail className="h-8 w-8 text-primary animate-float" />
